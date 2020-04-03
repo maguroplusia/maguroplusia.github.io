@@ -28,7 +28,7 @@ twitter_username: volcanic3939
 github_username:  maguroplusia
 
 # Build settings
-theme: jekyll-theme-minimal
+theme: minima
 plugins:
   - jekyll-feed
 
