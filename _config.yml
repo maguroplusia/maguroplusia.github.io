@@ -21,8 +21,8 @@
 title: maugro's page
 email: maugroplusia@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  hoge
-baseurl: "/maguroplusia.github.io" # the subpath of your site, e.g. /blog
+  home
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://maguroplusia.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: volcanic3939
 github_username:  maguroplusia
