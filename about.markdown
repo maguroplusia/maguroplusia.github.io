@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 maguroです。
-主に競技プログラミングをしています。たまにUnityでゲームを作ったり、このマイページのように自分でwebページを作ったりしています
+主に競技プログラミングをしています。たまにUnityでゲームを作ったり、このマイページのように自分でwebページを作ったりしています。
 
 [AtCoder](https://atcoder.jp/users/AItale)
 
