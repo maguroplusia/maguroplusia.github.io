@@ -11,4 +11,4 @@ maguroです。
 
 [scrapbox](https://scrapbox.io/magurosdiary/)
 
-[Qiita](https://qiita.com/maguro1630)
+[競プロライブラリ](https://maguroplusia.github.io/Library)
