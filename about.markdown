@@ -4,11 +4,15 @@ title: About
 permalink: /about/
 ---
 
-maguroです。
-主に競技プログラミングをしています。たまにUnityでゲームを作ったり、このマイページのように自分でwebページを作ったりしています。
+- 競技プログラミング
+  - AtCoder青色
+  - JOI2020/2021　本選
+  - PAST第3回　上級（88点）
 
-[AtCoder](https://atcoder.jp/users/AItale)
+- その他
+CTF、web開発（初心者）、ゲーム作成（Unity、Siv3D）…
 
-[scrapbox](https://scrapbox.io/magurosdiary/)
-
-[競プロライブラリ](https://maguroplusia.github.io/Library)
+Twitter:[@maguro3260](https://twitter.com/maguro3260)  
+AtCoder:[AItale](https://atcoder.jp/users/AItale)  
+[scrapbox](https://scrapbox.io/magurosdiary/)（競技プログラミングの問題の解法を載せています）
+[競技プログラミングのライブラリ](https://maguroplusia.github.io/Library)
