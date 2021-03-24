@@ -10,6 +10,7 @@ permalink: /about/
   - PAST第3回　上級（88点）
 
 - その他
+
 CTF、web開発（初心者）、ゲーム作成（Unity、Siv3D）…
 
 
