@@ -62,7 +62,7 @@
             right: 1%;
             color: var(--primary-color);
             background: rgba(255,255,255,0.95);
-            padding: 25px;
+            padding: 2%;
             border-radius: 15px;
             z-index: 100;
             border: 4px solid var(--primary-color);
@@ -178,10 +178,9 @@
     </defs>
 </svg>
 
-<div id="timer-display" style="display: none;">
+<div id="timer-display" style="display: none;" onclick="toggleTimer()">
     <div id="timer-label">残り時間</div>
     <span id="timer-now">20:00</span>
-    <button id="pause-btn" onclick="toggleTimer()">タイマー停止</button>
 </div>
 
 <div id="screen1" class="screen active" ondblclick="nextScreen(1)">
@@ -189,8 +188,8 @@
     <div class="diagram">
         <svg id="svg1"></svg>
         <div class="item" id="s1-1" style="top:45%; left:5%;" ondblclick="showMask(this)">万能鍵を入手<div class="mask" onclick="hideMask(event)"></div></div>
-        <div class="item" id="s1-2" style="top:15%; left:40%;" ondblclick="showMask(this)">扉の鍵を開ける<div class="mask" onclick="hideMask(event)"></div></div>
-        <div class="item" id="s1-3" style="top:75%; left:40%;" ondblclick="showMask(this)">窓の鍵を開ける<div class="mask" onclick="hideMask(event)"></div></div>
+        <div class="item" id="s1-2" style="top:15%; left:45%;" ondblclick="showMask(this)">扉の鍵を開ける<div class="mask" onclick="hideMask(event)"></div></div>
+        <div class="item" id="s1-3" style="top:75%; left:45%;" ondblclick="showMask(this)">窓の鍵を開ける<div class="mask" onclick="hideMask(event)"></div></div>
         <div class="item p-right" id="s1-end" style="top:20%;">脱出成功！</div>
     </div>
 </div>
@@ -221,7 +220,7 @@
         <div class="item" id="s3-8" style="top:5%; left:25%;" ondblclick="showMask(this)">自力でよじ登る<div class="mask" onclick="hideMask(event)"></div></div>
         <div class="item" id="s3-9" style="top:55%; left:45%;" ondblclick="showMask(this)">胃から鍵を<br>呼び出す<div class="mask" onclick="hideMask(event)"></div></div>
         <div class="item" id="s3-10" style="top:75%; left:45%;" ondblclick="showMask(this)">カプセルを開ける<div class="mask" onclick="hideMask(event)"></div></div>
-        <div class="item" id="s3-11" style="top:15%; left:45%;" ondblclick="showMask(this)">穴から外に出る<div class="mask" onclick="hideMask(event)"></div></div>
+        <div class="item" id="s3-11" style="top:15%; left:45%;" ondblclick="showMask(this)">上から外に出る<div class="mask" onclick="hideMask(event)"></div></div>
         <div class="item" id="s3-12" style="top:65%; left:65%;" ondblclick="showMask(this)">鍵で扉を開ける<div class="mask" onclick="hideMask(event)"></div></div>
         <div class="item p-right" id="s3-end" style="top:20%;">脱出成功！</div>
     </div>
@@ -300,6 +299,7 @@
     }
 
     function startTimer() {
+        const timer = document.getElementById('timer-display');
         if (timerInterval) return;
         timerInterval = setInterval(() => {
             if (countdownSeconds > 0) {
@@ -310,23 +310,23 @@
                 alert("タイムアップ！");
             }
         }, 1000);
+        timer.style.color = "var(--primary-color)";
+        timer.style.border = "4px solid var(--primary-color)";
     }
 
     function stopTimer() {
+        const timer = document.getElementById('timer-display');
         clearInterval(timerInterval);
         timerInterval = null;
+        timer.style.color = "var(--success-color)";
+        timer.style.border = "4px solid var(--success-color)";
     }
 
     function toggleTimer() {
-        const btn = document.getElementById('pause-btn');
         if (timerInterval) {
             stopTimer();
-            btn.innerText = "タイマー再開";
-            btn.style.background = "var(--success-color)";
         } else {
             startTimer();
-            btn.innerText = "タイマー停止";
-            btn.style.background = "var(--primary-color)";
         }
     }
 
@@ -349,9 +349,6 @@
                 stopTimer();
                 results[num] = previousCountdownSeconds - countdownSeconds;
                 previousCountdownSeconds = countdownSeconds;
-                const btn = document.getElementById('pause-btn');
-                btn.innerText = "タイマー停止";
-                btn.style.background = "var(--primary-color)";
             }
         }
     }
