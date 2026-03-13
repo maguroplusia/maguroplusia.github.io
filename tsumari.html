@@ -345,7 +345,7 @@
             const num = parseInt(screen.id.replace('screen', ''));
             if (num >= 2) {
                 stopTimer();
-                results[num] = previousCountdownSeconds - countdownSeconds;
+                results[num] += previousCountdownSeconds - countdownSeconds;
                 previousCountdownSeconds = countdownSeconds;
             }
         }
