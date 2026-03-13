@@ -244,10 +244,17 @@
     </div>
 </div>
 
-<div id="result" class="screen result-screen" ondblclick="window.location.reload(true);">
+<div id="result" class="screen result-screen" ondblclick="nextScreen(5)">
     <h1 id="result-title"></h1>
     <div id="times-list"></div>
     <div id="total-time" style="font-size: 48px; margin: 30px 0; font-weight: bold;"></div>
+</div>
+
+<div id="screen5" class="screen" ondblclick="window.location.reload(true);">
+    <h1 style="margin-bottom: 20px;">アンケートにご協力ください</h1>
+    <p style="font-size: 24px; margin-bottom: 40px;">ご参加ありがとうございました！<br>以下のQRコードからアンケートへの回答をお願いします。</p>
+    
+    <img src="./tsumari_qr.png" alt="アンケートQR" style="width: 300px; height: 300px; border: 10px solid white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
 </div>
 
 <script>
@@ -361,22 +368,36 @@
         }
     }
 
-    function nextScreen(currentNum) {
-        const currentScreen = document.getElementById('screen' + currentNum);
-        const remaining = Array.from(currentScreen.querySelectorAll('.mask')).filter(m => m.style.display !== 'none');
-        if (remaining.length > 0) return;
+    function nextScreen(currentId) {
+        let currentScreen, nextScreenId;
+
+        if (currentId === 4) {
+            // 最後の部屋からはリザルト画面へ
+            currentScreen = document.getElementById('screen4');
+            nextScreenId = 'result';
+        } else if (currentId === 5) {
+            // リザルト画面からはアンケート画面(screen5)へ
+            currentScreen = document.getElementById('result');
+            nextScreenId = 'screen5';
+        } else {
+            // 通常の部屋の遷移
+            currentScreen = document.getElementById('screen' + currentId);
+            const remaining = Array.from(currentScreen.querySelectorAll('.mask')).filter(m => m.style.display !== 'none');
+            if (remaining.length > 0) return;
+            nextScreenId = 'screen' + (currentId + 1);
+        }
 
         currentScreen.classList.remove('active');
-        const nextNum = currentNum + 1;
-        const nextScreen = document.getElementById('screen' + nextNum) || document.getElementById('result');
+        const nextScreen = document.getElementById(nextScreenId);
         nextScreen.classList.add('active');
 
         drawLines();
-        if (nextNum >= 2 && nextNum <= 4) {
+
+        if (nextScreenId === 'screen2' || nextScreenId === 'screen3' || nextScreenId === 'screen4') {
             document.getElementById('timer-display').style.display = 'block';
-            startTimes[nextNum] = Date.now();
+            startTimes[parseInt(nextScreenId.replace('screen', ''))] = Date.now();
             startTimer();
-        } else if (nextScreen.id === 'result') {
+        } else if (nextScreenId === 'result') {
             document.getElementById('timer-display').style.display = 'none';
             showFinalResults();
         }
