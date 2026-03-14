@@ -168,6 +168,10 @@
 </head>
 <body>
 
+<audio id="bgm" loop>
+    <source src="tsumari_bgm.wav" type="audio/mpeg">
+</audio>
+
 <svg style="width:0; height:0; position:absolute;">
     <defs>
         <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
@@ -305,6 +309,10 @@
 
     function startTimer() {
         const timer = document.getElementById('timer-display');
+        const bgm = document.getElementById('bgm'); // BGM要素を取得
+        // タイマー開始と同時にBGMを再生
+        bgm.play().catch(e => console.log("再生がブロックされました", e));
+        
         if (timerInterval) return;
         timerInterval = setInterval(() => {
             if (countdownSeconds > 0) {
